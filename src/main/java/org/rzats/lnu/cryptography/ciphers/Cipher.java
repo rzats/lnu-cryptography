@@ -1,7 +1,7 @@
 package org.rzats.lnu.cryptography.ciphers;
 
 /**
- * Designates a class that can encrypt a {@code int[]} message and decrypt it into its' original form.
+ * Designates a class that can encrypt a {@code int[]} message of ASCII integers and decrypt it into its' original form.
  * <p>
  * Additional variables (keys, etc.) can be defined in the class constructors for this interface's implementations.
  */
