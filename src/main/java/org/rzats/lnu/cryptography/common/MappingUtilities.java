@@ -6,10 +6,10 @@ public class MappingUtilities {
     }
 
     /**
-     * Transforms a string into an array of ASCII integers
+     * Transforms a string into an array of ASCII integers.
      *
-     * @param text The string to transform
-     * @return An array of integers representing the string
+     * @param text The string to transform.
+     * @return An array of integers representing the string.
      */
     public static int[] toASCIIArray(String text) {
         int[] array = new int[text.length()];
@@ -22,10 +22,10 @@ public class MappingUtilities {
     }
 
     /**
-     * Transforms an array of ASCII integers into a string
+     * Transforms an array of ASCII integers into a string.
      *
-     * @param array The array to transform
-     * @return The original string
+     * @param array The array to transform.
+     * @return The original string.
      */
     public static String toText(int[] array) {
         StringBuilder text = new StringBuilder(array.length);

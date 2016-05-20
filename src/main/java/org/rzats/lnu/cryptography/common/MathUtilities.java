@@ -6,11 +6,11 @@ public class MathUtilities {
     }
 
     /**
-     * An extension to Java's % operator that handles negative numbers - necessary for Caesar's cipher.
+     * An extension to Java's % operator that handles negative numbers.
      *
-     * @param i The dividend
-     * @param j The divisor
-     * @return The remainder
+     * @param i The dividend.
+     * @param j The divisor.
+     * @return The remainder.
      */
     public static int modulo(int i, int j) {
         while (i < 0) {

@@ -1,5 +1,6 @@
 package org.rzats.lnu.cryptography.ciphers;
 
+import org.rzats.lnu.cryptography.common.CryptoConstants;
 import org.rzats.lnu.cryptography.common.MathUtilities;
 
 /**
@@ -8,20 +9,7 @@ import org.rzats.lnu.cryptography.common.MathUtilities;
  */
 public class CaesarCipher implements Cipher {
     /**
-     * The size of the Latin alphabet - used in the modulo operator
-     */
-    private static final int ALPHABET_SIZE = 26;
-    /**
-     * The ASCII code of 'A'
-     */
-    private static final int ASCII_A_UPPERCASE = 65;
-    /**
-     * The ASCII code of 'a'
-     */
-    private static final int ASCII_A_LOWERCASE = 97;
-
-    /**
-     * The right shift parameter - acts as a jey
+     * The right shift parameter - acts as a key.
      */
     private int shift;
 
@@ -37,9 +25,11 @@ public class CaesarCipher implements Cipher {
             // If the character is alphabetic, encrypt it, otherwise add it to the ciphertext unchanged
             if (Character.isAlphabetic(plaintext[i])) {
                 if (Character.isUpperCase(plaintext[i])) {
-                    ciphertext[i] = ASCII_A_UPPERCASE + MathUtilities.modulo(plaintext[i] - ASCII_A_UPPERCASE + shift, ALPHABET_SIZE);
+                    ciphertext[i] = CryptoConstants.ASCII_A_UPPERCASE
+                            + MathUtilities.modulo(plaintext[i] - CryptoConstants.ASCII_A_UPPERCASE + shift, CryptoConstants.ALPHABET_SIZE);
                 } else {
-                    ciphertext[i] = ASCII_A_LOWERCASE + MathUtilities.modulo(plaintext[i] - ASCII_A_LOWERCASE + shift, ALPHABET_SIZE);
+                    ciphertext[i] = CryptoConstants.ASCII_A_LOWERCASE
+                            + MathUtilities.modulo(plaintext[i] - CryptoConstants.ASCII_A_LOWERCASE + shift, CryptoConstants.ALPHABET_SIZE);
                 }
             } else {
                 ciphertext[i] = plaintext[i];
@@ -57,9 +47,11 @@ public class CaesarCipher implements Cipher {
             // If the character is alphabetic, decrypt it, otherwise add it to the plaintext unchanged
             if (Character.isAlphabetic(ciphertext[i])) {
                 if (Character.isUpperCase(ciphertext[i])) {
-                    plaintext[i] = ASCII_A_UPPERCASE + MathUtilities.modulo(ciphertext[i] - ASCII_A_UPPERCASE - shift, ALPHABET_SIZE);
+                    plaintext[i] = CryptoConstants.ASCII_A_UPPERCASE
+                            + MathUtilities.modulo(ciphertext[i] - CryptoConstants.ASCII_A_UPPERCASE - shift, CryptoConstants.ALPHABET_SIZE);
                 } else {
-                    plaintext[i] = ASCII_A_LOWERCASE + MathUtilities.modulo(ciphertext[i] - ASCII_A_LOWERCASE - shift, ALPHABET_SIZE);
+                    plaintext[i] = CryptoConstants.ASCII_A_LOWERCASE
+                            + MathUtilities.modulo(ciphertext[i] - CryptoConstants.ASCII_A_LOWERCASE - shift, CryptoConstants.ALPHABET_SIZE);
                 }
             } else {
                 plaintext[i] = ciphertext[i];

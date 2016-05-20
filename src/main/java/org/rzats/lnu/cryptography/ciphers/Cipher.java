@@ -7,18 +7,18 @@ package org.rzats.lnu.cryptography.ciphers;
  */
 public interface Cipher {
     /**
-     * Encrypts a given {@code int[]} message
+     * Encrypts a given {@code int[]} message.
      *
-     * @param plaintext The message to encrypt
-     * @return The encrypted plaintext
+     * @param plaintext The message to encrypt.
+     * @return The encrypted plaintext.
      */
     public int[] encrypt(int[] plaintext);
 
     /**
-     * Decrypts a given {@code int[]} cipher
+     * Decrypts a given {@code int[]} cipher.
      *
-     * @param ciphertext The cipher to decrypt
-     * @return The original plaintext
+     * @param ciphertext The cipher to decrypt.
+     * @return The original plaintext.
      */
     public int[] decrypt(int[] ciphertext);
 }

@@ -7,7 +7,7 @@ package org.rzats.lnu.cryptography.ciphers;
  */
 public class RailFenceCipher implements Cipher {
     /**
-     * The amount of the fence's "rails" - acts as a key
+     * The amount of the fence's "rails" - acts as a key.
      */
     private int fenceHeight;
 

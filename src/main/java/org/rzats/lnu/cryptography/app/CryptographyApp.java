@@ -3,6 +3,7 @@ package org.rzats.lnu.cryptography.app;
 import org.rzats.lnu.cryptography.ciphers.CaesarCipher;
 import org.rzats.lnu.cryptography.ciphers.Cipher;
 import org.rzats.lnu.cryptography.ciphers.RailFenceCipher;
+import org.rzats.lnu.cryptography.ciphers.VigenereCipher;
 import org.rzats.lnu.cryptography.common.MappingUtilities;
 
 public class CryptographyApp {
@@ -11,10 +12,10 @@ public class CryptographyApp {
     }
 
     /**
-     * A generalized method to showcase a {@code Cipher} implementation
+     * A generalized method to showcase a {@code Cipher} implementation.
      *
-     * @param cipher The {@code Cipher} to be used
-     * @param text   The initial plaintext string
+     * @param cipher The {@code Cipher} to be used.
+     * @param text   The initial plaintext string.
      */
     private static void demo(Cipher cipher, String text) {
         int[] plaintext = MappingUtilities.toASCIIArray(text);
@@ -29,9 +30,9 @@ public class CryptographyApp {
 
     /**
      * The main entry point for the application.
-     * Demonstrates all the existing ciphers, using verifiable (Wikipedia) data if possible
+     * Demonstrates all the existing ciphers, using verifiable (Wikipedia) data if possible.
      *
-     * @param args The console arguments
+     * @param args The console arguments.
      */
     public static void main(String[] args) {
         System.out.println("Caesar cipher:");
@@ -41,5 +42,9 @@ public class CryptographyApp {
         System.out.println("Rail-fence cipher:");
         Cipher railFence = new RailFenceCipher(3);
         demo(railFence, "WEAREDISCOVEREDFLEEATONCE");
+
+        System.out.println("Vigenere cipher:");
+        Cipher vigenere = new VigenereCipher(MappingUtilities.toASCIIArray("LEMON"));
+        demo(vigenere, "ATTACK AT DAWN");
     }
 }
