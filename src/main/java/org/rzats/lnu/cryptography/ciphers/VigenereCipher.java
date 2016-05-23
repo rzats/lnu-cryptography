@@ -11,7 +11,7 @@ public class VigenereCipher implements Cipher {
     /**
      * The key for the cipher.
      */
-    private int[] key;
+    protected int[] key;
 
     public VigenereCipher(int[] key) {
         // Convert the key to a positional, case-insensitive representation (a/A -> 0, b/B -> 1...)

@@ -2,9 +2,11 @@ package org.rzats.lnu.cryptography.app;
 
 import org.rzats.lnu.cryptography.ciphers.CaesarCipher;
 import org.rzats.lnu.cryptography.ciphers.Cipher;
+import org.rzats.lnu.cryptography.ciphers.OneTimePadCipher;
 import org.rzats.lnu.cryptography.ciphers.RailFenceCipher;
 import org.rzats.lnu.cryptography.ciphers.VigenereCipher;
 import org.rzats.lnu.cryptography.common.MappingUtilities;
+import org.rzats.lnu.cryptography.common.MathUtilities;
 
 public class CryptographyApp {
     private CryptographyApp() {
@@ -46,5 +48,11 @@ public class CryptographyApp {
         System.out.println("Vigenere cipher:");
         Cipher vigenere = new VigenereCipher(MappingUtilities.toASCIIArray("LEMON"));
         demo(vigenere, "ATTACK AT DAWN");
+
+        System.out.println("One-time pad:");
+        int[] pad = MathUtilities.random(5, 65, 90);
+        System.out.println("Using (pseudo-)randomly generated one-time pad: " + MappingUtilities.toText(pad));
+        Cipher oneTimePad = new OneTimePadCipher(pad);
+        demo(oneTimePad, "HELLO");
     }
 }
