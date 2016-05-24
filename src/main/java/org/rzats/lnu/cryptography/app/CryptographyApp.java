@@ -7,6 +7,7 @@ import org.rzats.lnu.cryptography.ciphers.RailFenceCipher;
 import org.rzats.lnu.cryptography.ciphers.VigenereCipher;
 import org.rzats.lnu.cryptography.common.MappingUtilities;
 import org.rzats.lnu.cryptography.common.MathUtilities;
+import org.rzats.lnu.cryptography.cryptosystem.RSACryptosystem;
 
 public class CryptographyApp {
     private CryptographyApp() {
@@ -37,6 +38,8 @@ public class CryptographyApp {
      * @param args The console arguments.
      */
     public static void main(String[] args) {
+        // Ciphers
+
         System.out.println("Caesar cipher:");
         Cipher caesar = new CaesarCipher(23);
         demo(caesar, "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG");
@@ -54,5 +57,17 @@ public class CryptographyApp {
         System.out.println("Using (pseudo-)randomly generated one-time pad: " + MappingUtilities.toText(pad));
         Cipher oneTimePad = new OneTimePadCipher(pad);
         demo(oneTimePad, "HELLO");
+
+        // Cryptosystems
+
+        System.out.println("RSA:");
+        RSACryptosystem rsa = new RSACryptosystem(61, 53, 17);
+        int plaintext = 65;
+        int ciphertext = rsa.encrypt(plaintext);
+        int decryptedPlaintext = rsa.decrypt(ciphertext);
+        System.out.print(String.format("Plaintext: %s%nCiphertext: %s%nDecrypted plaintext: %s%n",
+                plaintext,
+                ciphertext,
+                decryptedPlaintext));
     }
 }

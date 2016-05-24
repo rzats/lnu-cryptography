@@ -5,6 +5,7 @@ import org.rzats.lnu.cryptography.common.MathUtilities;
 
 /**
  * A simple substitution cipher.
+ * <p>
  * Each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet.
  */
 public class CaesarCipher implements Cipher {

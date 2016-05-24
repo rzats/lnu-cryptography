@@ -5,6 +5,7 @@ import org.rzats.lnu.cryptography.common.MathUtilities;
 
 /**
  * A simple polyalphabetic substitution cipher.
+ * <p>
  * Uses a series of different Caesar ciphers based on the letters of a keyword.
  */
 public class VigenereCipher implements Cipher {

@@ -2,6 +2,7 @@ package org.rzats.lnu.cryptography.ciphers;
 
 /**
  * A "perfect" encryption method.
+ * <p>
  * Pairs a plaintext with a random secret key (one-time pad) used in the Vigenere cipher.
  */
 public class OneTimePadCipher extends VigenereCipher {
