@@ -1,5 +1,7 @@
 package org.rzats.lnu.cryptography.common;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Random;
 
 public class MathUtilities {
@@ -107,4 +109,16 @@ public class MathUtilities {
         return c;
     }
 
+    /**
+     * Rounds a {@code Double} down to a specific number of decimal places.
+     * <p>
+     * http://stackoverflow.com/a/2808648
+     *
+     * @param original      The {@code Double} to round.
+     * @param decimalPlaces The amount of decimal places to round the {@code Double} down to.
+     * @return The original {@code Double}, rounded down.
+     */
+    public static Double round(Double original, int decimalPlaces) {
+        return new BigDecimal(original.toString()).setScale(decimalPlaces, RoundingMode.HALF_UP).doubleValue();
+    }
 }
