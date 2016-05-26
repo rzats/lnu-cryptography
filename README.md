@@ -15,4 +15,4 @@ Run `./gradlew idea` or `./gradlew eclipse` to generate the project files, then 
 - [Vigenère cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher)
 - [One-time pad cipher](https://en.wikipedia.org/wiki/One-time_pad)
 - [RSA cryptosystem](<https://en.wikipedia.org/wiki/RSA_(cryptosystem)>)
-- [Diffie-Hellman shift exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
+- [Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
