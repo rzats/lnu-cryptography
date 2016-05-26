@@ -7,6 +7,7 @@ import org.rzats.lnu.cryptography.ciphers.RailFenceCipher;
 import org.rzats.lnu.cryptography.ciphers.VigenereCipher;
 import org.rzats.lnu.cryptography.common.MappingUtilities;
 import org.rzats.lnu.cryptography.common.MathUtilities;
+import org.rzats.lnu.cryptography.cryptosystem.DiffieHellmanParty;
 import org.rzats.lnu.cryptography.cryptosystem.RSACryptosystem;
 
 public class CryptographyApp {
@@ -69,5 +70,17 @@ public class CryptographyApp {
                 plaintext,
                 ciphertext,
                 decryptedPlaintext));
+
+        System.out.println("Diffie-Hellman:");
+        DiffieHellmanParty alice = new DiffieHellmanParty(23, 5);
+        DiffieHellmanParty bob = new DiffieHellmanParty(23, 5);
+        alice.setPrivateKey(6);
+        bob.setPrivateKey(15);
+
+        alice.sendPublicKey(bob);
+        bob.sendPublicKey(alice);
+
+        System.out.println("Alice's shared secret: " + alice.getSecret());
+        System.out.print("Bob's shared secret: " + bob.getSecret());
     }
 }

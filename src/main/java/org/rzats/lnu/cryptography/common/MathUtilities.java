@@ -23,7 +23,7 @@ public class MathUtilities {
     }
 
     /**
-     * Generate an array of random integer values within a specific range.
+     * Generates an array of random integer values within a specific range.
      *
      * @param size     The size of the array.
      * @param minValue The minimum value of an item in the array.
@@ -42,7 +42,7 @@ public class MathUtilities {
     }
 
     /**
-     * Calculate the modular multiplicative inverse of an integer a modulo m.
+     * Calculates the modular multiplicative inverse of an integer a modulo m.
      * <p>
      * Uses the extended Euclidean algorithm.
      *
@@ -90,7 +90,7 @@ public class MathUtilities {
 
 
     /**
-     * Perform modular exponentiation over a modulus.
+     * Performs modular exponentiation over a modulus.
      *
      * @param d The base.
      * @param e The exponent.
