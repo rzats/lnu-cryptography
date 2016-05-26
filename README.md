@@ -3,11 +3,11 @@ lnu-cryptography
 
 Ciphers and cryptosystems for the Basics of Cryptology course @ LNU.
 
-### Building
+## Building
 
 Run `./gradlew idea` or `./gradlew eclipse` to generate the project files, then launch `CryptographyApp.java`.
 
-### Contains:
+## Contains:
 
 - [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
  - [Frequency analysis tools](https://en.wikipedia.org/wiki/Caesar_cipher#Breaking_the_cipher)
