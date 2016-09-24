@@ -1,7 +1,7 @@
 lnu-cryptography
 ================
 
-Ciphers and cryptosystems for the Basics of Cryptology course @ LNU.
+Ciphers and cryptosystems for the Basics of Cryptology and Information Security courses @ LNU.
 
 ## Building
 
@@ -16,3 +16,4 @@ Run `./gradlew idea` or `./gradlew eclipse` to generate the project files, then 
 - [One-time pad cipher](https://en.wikipedia.org/wiki/One-time_pad)
 - [RSA cryptosystem](<https://en.wikipedia.org/wiki/RSA_(cryptosystem)>)
 - [Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
+- [Simplified DES](https://en.wikipedia.org/wiki/Data_Encryption_Standard#Simplified_DES) (8-bit plaintext, 10-bit key)

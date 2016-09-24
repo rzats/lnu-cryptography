@@ -4,13 +4,15 @@ import org.rzats.lnu.cryptography.ciphers.CaesarCipher;
 import org.rzats.lnu.cryptography.ciphers.Cipher;
 import org.rzats.lnu.cryptography.ciphers.OneTimePadCipher;
 import org.rzats.lnu.cryptography.ciphers.RailFenceCipher;
+import org.rzats.lnu.cryptography.ciphers.SimplifiedDESCipher;
 import org.rzats.lnu.cryptography.ciphers.VigenereCipher;
-import org.rzats.lnu.cryptography.common.MappingUtilities;
+import org.rzats.lnu.cryptography.common.ArrayUtilities;
 import org.rzats.lnu.cryptography.common.MathUtilities;
 import org.rzats.lnu.cryptography.cryptanalysis.TextUtilities;
 import org.rzats.lnu.cryptography.cryptosystem.DiffieHellmanParty;
 import org.rzats.lnu.cryptography.cryptosystem.RSACryptosystem;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class CryptographyApp {
@@ -25,14 +27,14 @@ public class CryptographyApp {
      * @param text   The initial plaintext string.
      */
     private static void demo(Cipher cipher, String text) {
-        int[] plaintext = MappingUtilities.toASCIIArray(text);
+        int[] plaintext = ArrayUtilities.toASCIIArray(text);
         int[] ciphertext = cipher.encrypt(plaintext);
         int[] decryptedPlaintext = cipher.decrypt(ciphertext);
 
         System.out.print(String.format("Plaintext: %s%nCiphertext: %s%nDecrypted plaintext: %s%n",
-                text,
-                MappingUtilities.toText(ciphertext),
-                MappingUtilities.toText(decryptedPlaintext)));
+            text,
+            ArrayUtilities.toText(ciphertext),
+            ArrayUtilities.toText(decryptedPlaintext)));
     }
 
     /**
@@ -53,12 +55,12 @@ public class CryptographyApp {
         demo(railFence, "WEAREDISCOVEREDFLEEATONCE");
 
         System.out.println("--- Vigenere cipher: ---");
-        Cipher vigenere = new VigenereCipher(MappingUtilities.toASCIIArray("LEMON"));
+        Cipher vigenere = new VigenereCipher(ArrayUtilities.toASCIIArray("LEMON"));
         demo(vigenere, "ATTACK AT DAWN");
 
         System.out.println("--- One-time pad: --- ");
         int[] pad = MathUtilities.random(5, 65, 90);
-        System.out.println("Using (pseudo-)randomly generated one-time pad: " + MappingUtilities.toText(pad));
+        System.out.println("Using (pseudo-)randomly generated one-time pad: " + ArrayUtilities.toText(pad));
         Cipher oneTimePad = new OneTimePadCipher(pad);
         demo(oneTimePad, "HELLO");
 
@@ -94,25 +96,25 @@ public class CryptographyApp {
             put('Z', 0.00074);
         }});
         System.out.println("Example frequency table: " + TextUtilities.frequencyDistribution("Hereupon Legrand arose, with a grave and stately air, and brought me the beetle\n" +
-                "from a glass case in which it was enclosed. It was a beautiful scarabaeus, and, at\n" +
-                "that time, unknown to naturalists—of course a great prize in a scientific point\n" +
-                "of view. There were two round black spots near one extremity of the back, and a\n" +
-                "long one near the other. The scales were exceedingly hard and glossy, with all the\n" +
-                "appearance of burnished gold. The weight of the insect was very remarkable, and,\n" +
-                "taking all things into consideration, I could hardly blame Jupiter for his opinion\n" +
-                "respecting it."));
+            "from a glass case in which it was enclosed. It was a beautiful scarabaeus, and, at\n" +
+            "that time, unknown to naturalists—of course a great prize in a scientific point\n" +
+            "of view. There were two round black spots near one extremity of the back, and a\n" +
+            "long one near the other. The scales were exceedingly hard and glossy, with all the\n" +
+            "appearance of burnished gold. The weight of the insect was very remarkable, and,\n" +
+            "taking all things into consideration, I could hardly blame Jupiter for his opinion\n" +
+            "respecting it."));
 
         // Cryptosystems
 
         System.out.println("--- RSA: --- ");
         RSACryptosystem rsa = new RSACryptosystem(61, 53, 17);
-        int plaintext = 65;
-        int ciphertext = rsa.encrypt(plaintext);
-        int decryptedPlaintext = rsa.decrypt(ciphertext);
+        int rsaPlaintext = 65;
+        int rsaCiphertext = rsa.encrypt(rsaPlaintext);
+        int rsaDecryptedPlaintext = rsa.decrypt(rsaCiphertext);
         System.out.print(String.format("Plaintext: %s%nCiphertext: %s%nDecrypted plaintext: %s%n",
-                plaintext,
-                ciphertext,
-                decryptedPlaintext));
+            rsaPlaintext,
+            rsaCiphertext,
+            rsaDecryptedPlaintext));
 
         System.out.println("--- Diffie-Hellman key exchange: --- ");
         DiffieHellmanParty alice = new DiffieHellmanParty(23, 5);
@@ -124,6 +126,18 @@ public class CryptographyApp {
         bob.sendPublicKey(alice);
 
         System.out.println("Alice's shared secret: " + alice.getSecret());
-        System.out.print("Bob's shared secret: " + bob.getSecret());
+        System.out.println("Bob's shared secret: " + bob.getSecret());
+
+        // Simplified DES
+        Cipher sdes = new SimplifiedDESCipher(new int[]{1, 1, 0, 0, 1, 1, 0, 0, 0, 1});
+        int[] sdesPlaintext = {1, 1, 1, 1, 1, 1, 1, 1};
+        int[] sdesCiphertext = sdes.encrypt(sdesPlaintext);
+        int[] sdesDecryptedPlaintext = sdes.decrypt(sdesCiphertext);
+
+        System.out.println("--- Simplified DES: --- ");
+        System.out.print(String.format("Plaintext: %s%nCiphertext: %s%nDecrypted plaintext: %s%n",
+            Arrays.toString(sdesPlaintext),
+            Arrays.toString(sdesCiphertext),
+            Arrays.toString(sdesDecryptedPlaintext)));
     }
 }
