@@ -107,10 +107,10 @@ public class CryptographyApp {
         // Cryptosystems
 
         System.out.println("--- RSA: --- ");
-        RSACryptosystem rsa = new RSACryptosystem(61, 53, 17);
-        int rsaPlaintext = 65;
-        int rsaCiphertext = rsa.encrypt(rsaPlaintext);
-        int rsaDecryptedPlaintext = rsa.decrypt(rsaCiphertext);
+        RSACryptosystem rsa = new RSACryptosystem(3, 11, 7);
+        String rsaPlaintext = "helloworld";
+        String rsaCiphertext = rsa.encrypt(rsaPlaintext);
+        String rsaDecryptedPlaintext = rsa.decrypt(rsaCiphertext);
         System.out.print(String.format("Plaintext: %s%nCiphertext: %s%nDecrypted plaintext: %s%n",
             rsaPlaintext,
             rsaCiphertext,
