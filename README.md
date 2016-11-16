@@ -17,3 +17,4 @@ Run `./gradlew idea` or `./gradlew eclipse` to generate the project files, then 
 - [RSA cryptosystem](<https://en.wikipedia.org/wiki/RSA_(cryptosystem)>)
 - [Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
 - [Simplified DES](https://en.wikipedia.org/wiki/Data_Encryption_Standard#Simplified_DES) (8-bit plaintext, 10-bit key)
+- [Blum Blum Shub](https://en.wikipedia.org/wiki/Blum_Blum_Shub)

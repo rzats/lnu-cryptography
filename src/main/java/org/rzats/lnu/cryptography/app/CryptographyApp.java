@@ -1,5 +1,6 @@
 package org.rzats.lnu.cryptography.app;
 
+import org.rzats.lnu.cryptography.ciphers.BlumBlumShubCipher;
 import org.rzats.lnu.cryptography.ciphers.CaesarCipher;
 import org.rzats.lnu.cryptography.ciphers.Cipher;
 import org.rzats.lnu.cryptography.ciphers.OneTimePadCipher;
@@ -63,6 +64,10 @@ public class CryptographyApp {
         System.out.println("Using (pseudo-)randomly generated one-time pad: " + ArrayUtilities.toText(pad));
         Cipher oneTimePad = new OneTimePadCipher(pad);
         demo(oneTimePad, "HELLO");
+
+        System.out.println(" --- Blum Blum Shub \"cipher\": --- ");
+        Cipher bbs = new BlumBlumShubCipher(19, 23, 233);
+        demo(bbs, "EXAMPLE TEXT");
 
         // Cryptanalysis
 
